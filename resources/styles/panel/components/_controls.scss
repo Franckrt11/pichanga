@@ -1,0 +1,15 @@
+.controls {
+  column-gap: toRem(18);
+  display: flex;
+
+  .icon {
+    color: $white !important;
+    cursor: pointer;
+    display: flex;
+
+    svg {
+      height: toRem(25);
+      width: auto;
+    }
+  }
+}

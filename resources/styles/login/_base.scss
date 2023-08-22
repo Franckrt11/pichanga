@@ -1,0 +1,70 @@
+html,
+body {
+  height: 100% !important;
+  background-color: $dark !important;
+  background-image: url("../images/aera-gray.svg");
+  background-repeat: no-repeat;
+  background-size: toRem(240) auto;
+  background-position: bottom 20px right 20px;
+}
+
+.auth-wrapper {
+  background-color: $secondary;
+  border-radius: toRem(10);
+  padding: toRem(70) toRem(20);
+
+  @include media-breakpoint-up(sm) {
+    padding: toRem(70) toRem(60);
+  }
+
+  img {
+    height: toRem(100);
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    color: $white;
+    font-size: toRem(24);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    color: $white;
+    font-size: toRem(16);
+    text-align: center;
+    font-weight: 300;
+  }
+
+  form {
+    .form-label {
+      transform: scale(0);
+      opacity: 0;
+      margin-bottom: 0;
+    }
+
+    .form-control {
+      border-radius: toRem(25);
+    }
+
+    [data-component="passwords"] {
+      position: relative;
+
+      .hide-icon {
+        position: absolute;
+        height: 13px;
+        width: auto;
+        right: 12px;
+        top: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.btn {
+  border-radius: toRem(25);
+}

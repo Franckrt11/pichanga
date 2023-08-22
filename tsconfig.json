@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "target": "es2018",
+    "lib": ["ES6", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "strict": true,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "baseUrl": ".",
+  },
+  "include": [
+    "resources/scripts/**/*.js",
+    "resources/scripts/**/*.ts",
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}

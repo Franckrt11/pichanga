@@ -1,0 +1,24 @@
+.app-main {
+  background-color: $dark;
+  color: $white;
+
+  .app-content-header {
+    .title {
+      text-transform: uppercase;
+      font-size: toRem(24);
+
+      span {
+        color: $granite-gray;
+      }
+    }
+
+    .description {
+      font-size: toRem(14);
+      font-weight: 300;
+
+      @include media-breakpoint-up(md) {
+        font-size: toRem(15);
+      }
+    }
+  }
+}

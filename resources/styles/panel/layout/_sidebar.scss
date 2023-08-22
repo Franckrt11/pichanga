@@ -1,0 +1,75 @@
+.app-sidebar {
+  background-color: $secondary;
+  padding: 0 toRem(15);
+
+  .sidebar-brand {
+    border-bottom: 1px solid $granite-gray;
+    display: block;
+    padding: toRem(25) toRem(10);
+
+    .brand-image {
+      display: block;
+      height: toRem(80);
+      margin: 0 auto toRem(5);
+      width: auto;
+    }
+
+    .brand-text {
+      color: $white;
+      font-size: toRem(16);
+      font-weight: 500;
+      margin-bottom: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .sidebar-user {
+    border-bottom: 1px solid $granite-gray;
+    display: flex;
+    column-gap: toRem(20);
+    padding: toRem(10) toRem(15);
+
+    .user-avatar {
+      height: toRem(25);
+      width: auto;
+    }
+
+    .user-name {
+      color: $white;
+      font-size: toRem(16);
+      font-weight: 500;
+      margin-bottom: 0;
+      text-transform: capitalize;
+    }
+  }
+
+  .sidebar-wrapper {
+    .nav-item {
+      &:hover {
+        .nav-link {
+          color: $orange;
+          background-color: $arsenic;
+        }
+      }
+
+      .nav-link {
+        color: $white;
+
+        &:focus {
+          color: $orange;
+          background-color: $arsenic;
+        }
+
+        &.active:not(:hover) {
+          color: $orange !important;
+          background-color: $arsenic !important;
+        }
+
+        .nav-icon {
+          width: toRem(30);
+        }
+      }
+    }
+  }
+}

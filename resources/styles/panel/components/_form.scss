@@ -1,0 +1,41 @@
+.form-aera {
+  .form-floating {
+    label {
+      color: $granite-gray;
+    }
+  }
+
+  input,
+  select {
+    border-radius: 2rem;
+  }
+
+  .form-control:disabled {
+    background-color: $gray-400;
+  }
+
+  .check-aera {
+    .btn-outline-primary {
+      background-color: $white;
+      border-color: #dee2e6;
+      color: $dark;
+    }
+
+    .btn-check:checked + .btn {
+      color: $white;
+      background-color: $orange;
+      border-color: var(--bs-btn-active-border-color);
+      box-shadow: var(--bs-btn-active-shadow);
+    }
+  }
+}
+
+.input-group {
+  .form-control {
+    border-radius: 2rem;
+  }
+
+  > .btn {
+    border-radius: 2rem;
+  }
+}

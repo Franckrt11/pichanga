@@ -1,0 +1,24 @@
+$font-family-base: "Oswald", sans-serif;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "dark": $dark,
+);
+
+// Pagination Variables
+$pagination-color: $white;
+$pagination-bg: transparent;
+$pagination-border-radius: 7px;
+$pagination-border-width: 2px;
+$pagination-margin-start: 15px;
+$pagination-border-color: $granite-gray;
+$pagination-focus-color: $dark;
+$pagination-hover-color: $dark;
+$pagination-hover-border-color: $white;
+$pagination-active-color: $dark;
+$pagination-active-bg: $white;
+$pagination-active-border-color: $white;
+$pagination-disabled-color: $white;
+$pagination-disabled-bg: transparent;
+$pagination-disabled-border-color: $granite-gray;

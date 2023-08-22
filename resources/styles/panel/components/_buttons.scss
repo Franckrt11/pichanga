@@ -1,0 +1,13 @@
+.btn {
+  border-radius: toRem(25);
+}
+
+.btn-primary {
+  color: $white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white !important;
+  }
+}

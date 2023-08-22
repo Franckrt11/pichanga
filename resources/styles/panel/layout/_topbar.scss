@@ -1,0 +1,61 @@
+.app-header {
+  background-color: $dark;
+  border-bottom: none;
+  padding: toRem(12) 0;
+
+  .navbar-wrapper {
+    background-color: $secondary;
+    display: flex;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    .nav-link {
+      align-items: center;
+      display: flex;
+      column-gap: toRem(8);
+
+      .link-icon {
+        color: $white;
+        height: toRem(20);
+        width: auto;
+      }
+    }
+  }
+
+  .navbar-text {
+    align-items: center;
+    color: $granite-gray;
+
+    .text-icon {
+      height: 15px;
+      margin-left: toRem(7);
+      width: auto;
+    }
+  }
+
+  .navbar-form {
+    .btn-exit {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      border-color: transparent;
+      box-shadow: none;
+      color: $granite-gray;
+      column-gap: toRem(10);
+      display: flex;
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        border-color: transparent;
+        color: $granite-gray;
+      }
+
+      .btn-icon {
+        height: toRem(15);
+        width: auto;
+      }
+    }
+  }
+}
