@@ -10,6 +10,8 @@ use App\Http\Livewire\Pages\Admins\Home as Admins;
 use App\Http\Livewire\Pages\Admins\Crud as AdminsCrud;
 use App\Http\Livewire\Pages\Users\Home as Users;
 use App\Http\Livewire\Pages\Users\Crud as UsersCrud;
+use App\Http\Livewire\Pages\Comments\Home as Comments;
+use App\Http\Livewire\Pages\Comments\Crud as CommentsCrud;
 
 Route::prefix('panel')->group(function () {
     Route::middleware('guest:admin')->group(function () {
@@ -36,9 +38,8 @@ Route::prefix('panel')->group(function () {
         Route::get('/clientes', Users::class)->name('panel.users')->middleware('role:admin,mod');
         Route::get('/clientes/{id}', UsersCrud::class)->name('panel.users.crud')->middleware('role:admin,mod');
 
-        Route::get('/comentarios', function () {
-            return "comments";
-        })->name('panel.comments');
+        Route::get('/comentarios', Comments::class)->name('panel.comments')->middleware('role:admin,mod');
+        Route::get('/comentarios/{id}', CommentsCrud::class)->name('panel.comments.crud')->middleware('role:admin,mod');
 
         Route::get('/empresas', function () {
             return "companies";
