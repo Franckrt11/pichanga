@@ -12,7 +12,7 @@
                 <p class="mb-0">Oculta el menú lateral izquierdo presionando el botón</p>
                 <x-admin.icons.points class="text-icon" />
             </span>
-            <form class="navbar-form ms-auto" method="POST" action="{{ route('admin.logout') }}">
+            <form class="navbar-form ms-auto" method="POST" action="{{ route('panel.logout') }}">
                 @csrf
                 <button class="btn btn-exit" type="submit">
                     <p class="mb-0">SALIR</p>
