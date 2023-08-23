@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Admin;
+namespace App\View\Components\Admin\Icons;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Topbar extends Component
+class Edit extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Topbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.topbar');
+        return view('components.admin.icons.edit');
     }
 }

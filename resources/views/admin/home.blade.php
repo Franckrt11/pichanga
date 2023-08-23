@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <p><img src="{{ asset('images/arror-left.svg') }}" height="12" alt> Navega por las opciones del menú de la izquierda para ver información desarrollada.</p>
+                        <p><img src="{{ asset('images/admin/arror-left.svg') }}" height="12" alt> Navega por las opciones del menú de la izquierda para ver información desarrollada.</p>
                     </div>
                 </div>
             </div>

@@ -4,19 +4,19 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
-                        <x-icons.points class="link-icon" />
+                        <x-admin.icons.points class="link-icon" />
                     </a>
                 </li>
             </ul>
             <span class="navbar-text d-none d-sm-flex">
                 <p class="mb-0">Oculta el menú lateral izquierdo presionando el botón</p>
-                <x-icons.points class="text-icon" />
+                <x-admin.icons.points class="text-icon" />
             </span>
-            <form class="navbar-form ms-auto" method="POST" action="{{ route('logout') }}">
+            <form class="navbar-form ms-auto" method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                 <button class="btn btn-exit" type="submit">
                     <p class="mb-0">SALIR</p>
-                    <img src="{{ asset('images/exit.svg') }}" class="btn-icon" alt>
+                    <img src="{{ asset('images/admin/exit.svg') }}" class="btn-icon" alt>
                 </button>
             </form>
         </div>

@@ -17,7 +17,7 @@
             <div class="mb-3" data-component="passwords">
                 <label for="password" class="form-label visually-hidden">Contraseña</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Contraseña" required>
-                <img src="{{ asset('images/eye-icon.svg') }}" class="hide-icon" alt>
+                <img src="{{ asset('images/admin/eye-icon.svg') }}" class="hide-icon" alt>
             </div>
             <div class="d-grid col-12 col-md-6 mx-auto">
                 <button type="submit" class="btn btn-primary text-white">INGRESAR</button>

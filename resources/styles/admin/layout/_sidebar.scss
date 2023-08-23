@@ -5,6 +5,7 @@
   .sidebar-brand {
     border-bottom: 1px solid $granite-gray;
     display: block;
+    height: unset;
     padding: toRem(25) toRem(10);
 
     .brand-image {
@@ -45,6 +46,10 @@
   }
 
   .sidebar-wrapper {
+    @include media-breakpoint-up(lg) {
+      height: unset !important;
+    }
+
     .nav-item {
       &:hover {
         .nav-link {

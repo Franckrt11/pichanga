@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class Sidenav extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidenav');
+        return view('components.admin.sidenav');
     }
 }

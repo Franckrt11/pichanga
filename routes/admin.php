@@ -21,10 +21,29 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         // Route::get('/', Home::class)->name('admin.home');
         Route::get('/', function () {
-            return view('home');
-        })->name('home');
-        Route::post('logout', [AuthenticatedAdminController::class, 'destroy'])->name('admin.logout');
+            return view('admin.home');
+        })->name('admin.home');
+        Route::post('logout', [AuthenticatedController::class, 'destroy'])->name('admin.logout');
 
-        //
+
+        Route::get('/admins', function () {
+            return "admins";
+        })->name('admin.admins');
+
+        Route::get('/clientes', function () {
+            return "users";
+        })->name('admin.users');
+
+        Route::get('/comentarios', function () {
+            return "comments";
+        })->name('admin.comments');
+
+        Route::get('/empresas', function () {
+            return "companies";
+        })->name('admin.companies');
+
+        Route::get('/reservas', function () {
+            return "bookings";
+        })->name('admin.bookings');
     });
 });
