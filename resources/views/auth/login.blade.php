@@ -8,7 +8,7 @@
             </div>
             @endforeach
         @endif
-        <form method="POST" action="{{ route('admin.login') }}" class="mt-4 mb-3">
+        <form method="POST" action="{{ route('panel.login') }}" class="mt-4 mb-3">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label visually-hidden">Usuario</label>
@@ -24,7 +24,7 @@
             </div>
         </form>
         <div class="d-grid col-12 col-md-6 mx-auto">
-            <a href="{{ route('admin.password.request') }}" role="button" class="btn btn-dark btn-sm">
+            <a href="{{ route('panel.password.request') }}" role="button" class="btn btn-dark btn-sm">
                 Recuperar contraseña
             </a>
         </div>

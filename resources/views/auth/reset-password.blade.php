@@ -8,7 +8,7 @@
             </div>
             @endforeach
         @endif
-        <form method="POST" action="{{ route('admin.password.update') }}" class="mt-4 mb-5">
+        <form method="POST" action="{{ route('panel.password.update') }}" class="mt-4 mb-5">
             @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
             <div class="mb-3">
