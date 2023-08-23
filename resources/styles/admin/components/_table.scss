@@ -7,6 +7,7 @@
   .table {
     thead {
       th {
+        color: $white;
         font-weight: 400;
         border: none;
       }
@@ -15,6 +16,7 @@
     td {
       border-top: 2px solid $granite-gray;
       border-bottom: none;
+      color: $white;
     }
   }
 }
