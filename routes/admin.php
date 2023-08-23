@@ -12,6 +12,9 @@ use App\Http\Livewire\Pages\Users\Home as Users;
 use App\Http\Livewire\Pages\Users\Crud as UsersCrud;
 use App\Http\Livewire\Pages\Comments\Home as Comments;
 use App\Http\Livewire\Pages\Comments\Crud as CommentsCrud;
+use App\Http\Livewire\Pages\Companies\Home as Companies;
+use App\Http\Livewire\Pages\Companies\Crud as CompaniesCrud;
+use App\Http\Livewire\Pages\Companies\Field as CompaniesField;
 
 Route::prefix('panel')->group(function () {
     Route::middleware('guest:admin')->group(function () {
@@ -41,9 +44,9 @@ Route::prefix('panel')->group(function () {
         Route::get('/comentarios', Comments::class)->name('panel.comments')->middleware('role:admin,mod');
         Route::get('/comentarios/{id}', CommentsCrud::class)->name('panel.comments.crud')->middleware('role:admin,mod');
 
-        Route::get('/empresas', function () {
-            return "companies";
-        })->name('panel.companies');
+        Route::get('/empresas', Companies::class)->name('panel.companies')->middleware('role:admin,mod,data');
+        Route::get('/empresas/{id}', CompaniesCrud::class)->name('panel.companies.crud')->middleware('role:admin,mod,data');
+        Route::get('/empresas/{id}/cancha/{fid}', CompaniesField::class)->name('panel.companies.field')->middleware('role:admin,mod,data');
 
         Route::get('/reservas', function () {
             return "bookings";
