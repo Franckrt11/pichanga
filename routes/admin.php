@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 
 use App\Http\Livewire\Pages\Admins\Home as Admins;
 use App\Http\Livewire\Pages\Admins\Crud as AdminsCrud;
+use App\Http\Livewire\Pages\Users\Home as Users;
+use App\Http\Livewire\Pages\Users\Crud as UsersCrud;
 
-Route::prefix('admin')->group(function () {
+Route::prefix('panel')->group(function () {
     Route::middleware('guest:admin')->group(function () {
         Route::get('login', [AuthenticatedController::class, 'create'])->name('panel.login');
         Route::post('login', [AuthenticatedController::class, 'store']);
@@ -31,9 +33,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/admins', Admins::class)->name('panel.admins')->middleware('role:admin');
         Route::get('/admins/{id}', AdminsCrud::class)->name('panel.admins.crud')->middleware('role:admin');
 
-        Route::get('/clientes', function () {
-            return "users";
-        })->name('panel.users');
+        Route::get('/clientes', Users::class)->name('panel.users')->middleware('role:admin,mod');
+        Route::get('/clientes/{id}', UsersCrud::class)->name('panel.users.crud')->middleware('role:admin,mod');
 
         Route::get('/comentarios', function () {
             return "comments";
