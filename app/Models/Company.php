@@ -27,6 +27,7 @@ class Company extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'birth' => 'date',
+        'status' => 'boolean',
     ];
 
     public function fields()

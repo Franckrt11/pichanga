@@ -25,10 +25,11 @@ Route::prefix('company')->group(function () {
 
     Route::get('/fields/{id}', [FieldCompany::class, 'index'])->middleware('auth:sanctum');
     Route::get('/field/{id}', [FieldCompany::class, 'show'])->middleware('auth:sanctum');
-    Route::post('/field/{id}',[FieldCompany::class, 'update'])->middleware('auth:sanctum');
+    Route::put('/field/{id}',[FieldCompany::class, 'update'])->middleware('auth:sanctum');
     Route::post('/field/new',[FieldCompany::class, 'store'])->middleware('auth:sanctum');
     Route::post('/field/{id}/portrait',[FieldCompany::class, 'portrait'])->middleware('auth:sanctum');
     Route::delete('/field/{id}/portrait',[FieldCompany::class, 'remove'])->middleware('auth:sanctum');
+    Route::patch('/field/{id}/status',[FieldCompany::class, 'changestatus'])->middleware('auth:sanctum');
 
     Route::get('/field/{id}/pictures', [PictureCompany::class, 'show'])->middleware('auth:sanctum');
     Route::post('/field/{id}/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');

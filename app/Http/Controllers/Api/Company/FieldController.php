@@ -120,4 +120,13 @@ class FieldController extends Controller
 
         return response()->json(['status' => true, 'data' => 'La cancha no tiene portada.']);
     }
+
+    public function changestatus(Request $request, string $id)
+    {
+        $field = Field::findOrFail($id);
+        $field->active = $request->active;
+        $field->save();
+
+        return response()->json(['status' => true, 'message' => 'El estado de la cancha ha sido cambiado.']);
+    }
 }
