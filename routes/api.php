@@ -12,6 +12,9 @@ use App\Http\Controllers\Api\Company\ProfileController as ProfileCompany;
 use App\Http\Controllers\Api\Company\AvatarController as AvatarCompany;
 use App\Http\Controllers\Api\Company\FieldController as FieldCompany;
 use App\Http\Controllers\Api\Company\FieldPictureController as PictureCompany;
+use App\Http\Controllers\Api\ConfigController;
+
+Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
 
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);

@@ -1,6 +1,24 @@
 .app-sidebar {
   background-color: $secondary;
   padding: 0 toRem(15);
+  overflow-y: scroll;
+
+  & {
+    scrollbar-width: thin;
+  }
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
 
   .sidebar-brand {
     border-bottom: 1px solid $granite-gray;
@@ -51,12 +69,10 @@
     }
 
     .nav-item {
-      &:hover {
-        .nav-link {
+        .nav-link:hover {
           color: $orange;
           background-color: $arsenic;
         }
-      }
 
       .nav-link {
         color: $white;

@@ -16,6 +16,9 @@ use App\Http\Livewire\Pages\Companies\Home as Companies;
 use App\Http\Livewire\Pages\Companies\Crud as CompaniesCrud;
 use App\Http\Livewire\Pages\Companies\Field as CompaniesField;
 use App\Http\Livewire\Pages\Booking\Home as Bookings;
+use App\Http\Livewire\Pages\Config\Contact;
+use App\Http\Livewire\Pages\Config\Terms;
+use App\Http\Livewire\Pages\Config\Privacy;
 
 Route::prefix('panel')->group(function () {
     Route::middleware('guest:admin')->group(function () {
@@ -44,5 +47,8 @@ Route::prefix('panel')->group(function () {
         Route::get('/empresas/{id}', CompaniesCrud::class)->name('panel.companies.crud')->middleware('role:admin,mod,data');
         Route::get('/empresas/{id}/cancha/{fid}', CompaniesField::class)->name('panel.companies.field')->middleware('role:admin,mod,data');
         Route::get('/reservas', Bookings::class)->name('panel.bookings')->middleware('role:admin,mod,data');
+        Route::get('/config/contacto', Contact::class)->name('panel.config.contact')->middleware('role:admin');
+        Route::get('/config/terminos', Terms::class)->name('panel.config.terms')->middleware('role:admin');
+        Route::get('/config/privacidad', Privacy::class)->name('panel.config.privacy')->middleware('role:admin');
     });
 });
