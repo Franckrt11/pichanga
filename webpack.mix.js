@@ -1,3 +1,4 @@
+const { copyFile } = require('fs');
 const mix = require('laravel-mix');
 
 mix.sass('resources/styles/admin/index.scss', 'public/css/admin.css')
@@ -5,4 +6,5 @@ mix.sass('resources/styles/admin/index.scss', 'public/css/admin.css')
     .js('resources/scripts/login/index.js', 'public/js/login.js')
     .ts('resources/scripts/admin/index.ts', 'public/js/admin.js')
     .copyDirectory('resources/images', 'public/images')
+    .copy('resources/scripts/admin/components/tinymce/langs/es_MX.js', 'public/js/es_MX.js')
     .options({processCssUrls: false});

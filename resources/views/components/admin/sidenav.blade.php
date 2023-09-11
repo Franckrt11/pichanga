@@ -9,7 +9,7 @@
     </div>
     <div class="sidebar-wrapper">
         <nav class="mt-2">
-            <ul class="nav sidebar-menu flex-column">
+            <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview">
                 <li class="nav-item active">
                     <a href="{{ route('panel.home') }}" class="nav-link {{ Route::current()->getName() == 'panel.home' ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-house"></i>
@@ -54,6 +54,34 @@
                         <i class="nav-icon fa-solid fa-list"></i>
                         <p>Comentarios</p>
                     </a>
+                </li>
+                @endif
+                @if (array_search(Auth::user()->role, ['dummy','admin']))
+                <li class="nav-item {{ request()->segment(2) == 'config' ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->segment(2) == 'config' ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-cog"></i>
+                        <p>Config.<i class="nav-arrow fa-solid fa-angle-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('panel.config.contact') }}" class="nav-link {{ Route::current()->getName() == 'panel.config.contact' ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-phone-volume"></i>
+                                <p>Contacto</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('panel.config.terms') }}" class="nav-link {{ Route::current()->getName() == 'panel.config.terms' ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-file-signature"></i>
+                                <p>Términos y Cond.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('panel.config.privacy') }}" class="nav-link {{ Route::current()->getName() == 'panel.config.privacy' ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-file-signature"></i>
+                                <p>Polit. Privacidad</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 @endif
             </ul>
