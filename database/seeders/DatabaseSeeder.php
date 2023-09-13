@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             FieldSeeder::class,
             CommentSeeder::class,
             BookingSeeder::class,
-            ConfigSeeder::class
+            ConfigSeeder::class,
+            CompanyActivityLogSeeder::class,
+            UserActivityLogSeeder::class
         ]);
     }
 }
