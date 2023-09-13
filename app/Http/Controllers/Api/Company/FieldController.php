@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Field;
+use App\Models\CompanyActivityLog;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,6 +42,12 @@ class FieldController extends Controller
             'active' => TRUE,
             'company_id' => $request->company_id,
         ]);
+
+        CompanyActivityLog::create([
+            'message' => 'Has registrado una nueva cancha.',
+            'company_id' => $request->company_id
+        ]);
+
         return response()->json(['status' => true, 'data' => ['id' => $field->id]]);
     }
 
