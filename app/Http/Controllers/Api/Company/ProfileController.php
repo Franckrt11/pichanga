@@ -61,4 +61,14 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function config(Request $request, string $id)
+    {
+        $company = Company::findOrFail($id);
+
+        $company->{$request->type} = $request->value;
+        $company->save();
+
+        return response()->json(['status' => true, 'message' => 'Datos guardados.']);
+    }
 }

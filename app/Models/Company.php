@@ -16,7 +16,9 @@ class Company extends Authenticatable
         'email',
         'password',
         'status',
-        'photo'
+        'photo',
+        'push',
+        'mailing'
     ];
 
     protected $hidden = [
@@ -28,6 +30,8 @@ class Company extends Authenticatable
         'email_verified_at' => 'datetime',
         'birth' => 'date',
         'status' => 'boolean',
+        'push' => 'boolean',
+        'mailing' => 'boolean'
     ];
 
     public function fields()

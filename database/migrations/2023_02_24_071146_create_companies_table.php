@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('status');
+            $table->boolean('push')->default(true);
+            $table->boolean('mailing')->default(true);
             $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
