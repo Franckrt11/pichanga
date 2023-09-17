@@ -11,8 +11,8 @@ class CompanyActivityLog extends Model
         'company_id',
     ];
 
-    protected $casts = [
-        'created_at' => 'date:d/m/Y',
-        'updated_at' => 'date:d/m/Y',
-    ];
+    // protected $casts = [
+    //     'created_at' => 'date:d/m/Y',
+    //     'updated_at' => 'date:d/m/Y',
+    // ];
 }
