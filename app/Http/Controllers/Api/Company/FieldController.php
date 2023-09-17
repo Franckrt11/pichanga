@@ -44,7 +44,7 @@ class FieldController extends Controller
         ]);
 
         CompanyActivityLog::create([
-            'message' => 'Has registrado una nueva cancha.',
+            'message' => 'Has registrado una nueva cancha como '.$field ->name,
             'company_id' => $request->company_id
         ]);
 
