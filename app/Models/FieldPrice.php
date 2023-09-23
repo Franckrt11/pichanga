@@ -12,4 +12,8 @@ class FieldPrice extends Model
         'active',
         'field_hour_id'
     ];
+
+    protected $casts = [
+        'active'=> 'boolean',
+    ];
 }

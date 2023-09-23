@@ -11,4 +11,8 @@ class FieldDay extends Model
         'active',
         'field_id'
     ];
+
+    protected $casts = [
+        'active'=> 'boolean',
+    ];
 }

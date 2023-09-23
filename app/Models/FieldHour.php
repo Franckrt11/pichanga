@@ -12,4 +12,8 @@ class FieldHour extends Model
         'active',
         'field_day_id'
     ];
+
+    protected $casts = [
+        'active'=> 'boolean',
+    ];
 }

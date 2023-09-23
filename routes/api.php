@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\Company\FieldController as FieldCompany;
 use App\Http\Controllers\Api\Company\FieldPictureController as PictureCompany;
 use App\Http\Controllers\Api\Company\ConfigController as ConfigCompany;
 use App\Http\Controllers\Api\Company\ActivityController as ActivityCompany;
+use App\Http\Controllers\Api\Company\FieldRecordController as FieldRecordCompany;
 
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);
@@ -36,6 +37,9 @@ Route::prefix('company')->group(function () {
     Route::post('field/{id}/portrait',[FieldCompany::class, 'portrait'])->middleware('auth:sanctum');
     Route::delete('field/{id}/portrait',[FieldCompany::class, 'remove'])->middleware('auth:sanctum');
     Route::patch('field/{id}/status',[FieldCompany::class, 'changestatus'])->middleware('auth:sanctum');
+    Route::get('field/{id}/days',[FieldRecordCompany::class, 'showdays'])->middleware('auth:sanctum');
+    Route::post('field/{id}/days',[FieldRecordCompany::class, 'storedays'])->middleware('auth:sanctum');
+    Route::put('field/{id}/days',[FieldRecordCompany::class, 'updatedays'])->middleware('auth:sanctum');
 
     Route::get('field/{id}/pictures', [PictureCompany::class, 'show'])->middleware('auth:sanctum');
     Route::post('field/{id}/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');
