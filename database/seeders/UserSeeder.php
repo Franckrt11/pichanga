@@ -16,12 +16,7 @@ class UserSeeder extends Seeder
                 'email' => 'aerastudio@gmail.com',
                 'phone' => '991705138',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'birth' => '1984-02-19',
-                'sex' => 'male',
-                'status' => TRUE,
-                'photo' => NULL,
-                'google_id' => NULL,
-                'facebook_id' => NULL,
+                'district' => 'Cercado de Lima',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -31,12 +26,7 @@ class UserSeeder extends Seeder
                 'email' => 'juanaperez@gmail.com',
                 'phone' => '999888777',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'birth' => '1990-02-12',
-                'sex' => 'female',
-                'status' => TRUE,
-                'photo' => NULL,
-                'google_id' => NULL,
-                'facebook_id' => NULL,
+                'district' => 'Cercado de Lima',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

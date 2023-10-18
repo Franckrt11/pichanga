@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
 
-class AuthService {
+class AuthUserService {
 
     public $dataRequest;
 
@@ -24,7 +24,9 @@ class AuthService {
 
         if (!$auth) {
             $validatorMaker['name'] = $this->dataRequest['name'];
-            $validatorMaker['ruc'] = $this->dataRequest['ruc'];
+            $validatorMaker['lastname'] = $this->dataRequest['lastname'];
+            $validatorMaker['phone'] = $this->dataRequest['phone'];
+            $validatorMaker['district'] = $this->dataRequest['district'];
             $validatorMaker['password_confirmation'] = $this->dataRequest['password_confirmation'];
         }
 
@@ -35,8 +37,10 @@ class AuthService {
 
         $registerRules = [
             'name' => 'required|string',
-            'ruc' => 'required|digits:11',
-            'email' => 'required|email:rfc|unique:'.$table.',email',
+            'lastname' => 'required|string',
+            'phone' => 'digits:9',
+            'email' => 'email:rfc|unique:'.$table.',email',
+            'district' => 'required|string',
             'password' => ['required', 'string', Password::min(8), 'confirmed']
         ];
 
@@ -56,10 +60,11 @@ class AuthService {
         if ($validation['status']) {
             $user = $model::create([
                 'name' => $this->dataRequest['name'],
-                'ruc' => $this->dataRequest['ruc'],
+                'lastname' => $this->dataRequest['lastname'],
                 'email' => $this->dataRequest['email'],
-                'password' => Hash::make($this->dataRequest['password']),
-                'status' => true
+                'phone' => $this->dataRequest['phone'],
+                'district' => $this->dataRequest['district'],
+                'password' => Hash::make($this->dataRequest['password'])
             ]);
             $token = $user->createToken($device)->plainTextToken;
             return ['status' => true, 'token' => $token, 'user' => $user];
