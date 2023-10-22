@@ -29,6 +29,7 @@ Route::prefix('company')->group(function () {
     Route::get('activity/{id}', [ActivityCompany::class, 'show'])->middleware('auth:sanctum');
 
     Route::get('profile/{id}', [ProfileCompany::class, 'show'])->middleware('auth:sanctum');
+    Route::put('profile/update/{id}', [ProfileCompany::class, 'update'])->middleware('auth:sanctum');
     Route::post('avatar/update/{id}', [AvatarCompany::class, 'update'])->middleware('auth:sanctum');
     Route::post('avatar/remove/{id}', [AvatarCompany::class, 'destroy'])->middleware('auth:sanctum');
     Route::put('config/{id}', [ProfileCompany::class, 'config'])->middleware('auth:sanctum');
