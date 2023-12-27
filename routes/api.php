@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\ConfigController;
+use App\Http\Controllers\Api\ChatController;
+use App\Http\Controllers\Api\MessageController;
 
 // Company
 use App\Http\Controllers\Api\Company\Auth\AuthenticatedController as AuthCompany;
@@ -67,3 +69,10 @@ Route::prefix('client')->group(function () {
 });
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
+
+Route::get('chat', [ChatController::class,'index'])->middleware('auth:sanctum');
+Route::post('chat', [ChatController::class,'store'])->middleware('auth:sanctum');
+Route::get('chat/{id}', [ChatController::class,'show'])->middleware('auth:sanctum');
+
+Route::get('chat/message/{id}', [MessageController::class,'show'])->middleware('auth:sanctum');
+Route::post('chat/message', [MessageController::class,'store'])->middleware('auth:sanctum');
