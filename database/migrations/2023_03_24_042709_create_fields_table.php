@@ -26,8 +26,10 @@ return new class extends Migration
             $table->string('district');
             $table->string('address');
             $table->string('map');
-            $table->boolean('active');
             $table->string('portrait')->nullable();
+            $table->boolean('active')->default(true);
+            $table->boolean('hours')->default(true);
+            $table->boolean('prices')->default(true);
             $table->foreignId('company_id')->constrained();
             $table->timestamps();
         });

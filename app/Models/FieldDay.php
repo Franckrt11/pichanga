@@ -15,4 +15,14 @@ class FieldDay extends Model
     protected $casts = [
         'active'=> 'boolean',
     ];
+
+    public function field()
+    {
+        return $this->belongsTo(Field::class);
+    }
+
+    public function hours()
+    {
+        return $this->hasMany(FieldHour::class);
+    }
 }

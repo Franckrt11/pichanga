@@ -84,45 +84,66 @@ class FieldRecordController extends Controller
 
     public function showhours(string $id)
     {
-        $days = FieldDay::with('hours:id,start,end,field_day_id')->where('field_id', $id)->get();
-
+        $days = FieldDay::with('hours')->where('field_id', $id)->get();
         $filtered = [];
-        $same = false;
 
         foreach ($days as $day) {
             $filtered[$day->day] = $day->hours;
         }
-        // Ver si es same o no same
 
-        
-
-        return response()->json(['status' => true, 'data' => $filtered, 'same' => $same]);
+        return response()->json(['status' => true, 'data' => $filtered]);
     }
 
     public function storehours(Request $request, string $id)
     {
         $days = FieldDay::where('field_id', $id)->where('active', 1)->select('id', 'day')->get();
 
-        if ($request->same) {
-            foreach ($days as $day) {
-                foreach ($request->hours as $hours) {
-                    FieldHour::create([
-                        'start' => $hours['from'],
-                        'end' => $hours['to'],
-                        'field_day_id' => $day->id,
-                        'created_at' => now(),
-                        'updated_at' => now()
-                    ]);
-                }
+        foreach ($request->hours as $keyDay => $hours) {
+            if (empty($hours)) continue;
+            foreach ($hours as $hour) {
+                FieldHour::create([
+                    'start' => $hour['start'],
+                    'end' => $hour['end'],
+                    'position' => $hour['position'],
+                    'field_day_id' => $days->where('day', $keyDay)->first()->id,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
             }
-        } else {
-            foreach ($request->hours as $keyDay => $hours) {
-                if (empty($hours)) continue;
-                foreach ($hours as $hour) {
+        }
+        return response()->json(['status' => true]);
+    }
+
+    public function updatehours(Request $request, string $id)
+    {
+        $days = FieldDay::with('hours')->where('field_id', $id)->where('active', 1)->select('id', 'day')->get();
+
+        foreach ($request->hours as $key_day => $hours_array) {
+            if (empty($hours_array)) continue;
+
+            $field_day = $days->where('day', $key_day)->first();
+
+            $saved_ids = $field_day->hours->pluck('id')->toArray();
+            $request_ids = array_column($hours_array, 'id');
+            $diff_ids = array_diff($saved_ids, $request_ids);
+
+            if (!empty($diff_ids)) {
+                FieldHour::destroy($diff_ids);
+            }
+
+            foreach ($hours_array as $hour_object) {
+                if (array_key_exists('id', $hour_object)) {
+                    $edit_hour = FieldHour::find($hour_object['id']);
+                    $edit_hour->start = $hour_object['start'];
+                    $edit_hour->end = $hour_object['end'];
+                    $edit_hour->position = $hour_object['position'];
+                    $edit_hour->save();
+                } else {
                     FieldHour::create([
-                        'start' => $hour['from'],
-                        'end' => $hour['to'],
-                        'field_day_id' => $days->where('day', $keyDay)->first()->id,
+                        'start' => $hour_object['start'],
+                        'end' => $hour_object['end'],
+                        'position' => $hour_object['position'],
+                        'field_day_id' => $field_day->id,
                         'created_at' => now(),
                         'updated_at' => now()
                     ]);
@@ -131,10 +152,5 @@ class FieldRecordController extends Controller
         }
 
         return response()->json(['status' => true]);
-    }
-
-    public function updatehours(Request $request, string $id)
-    {
-        //
     }
 }

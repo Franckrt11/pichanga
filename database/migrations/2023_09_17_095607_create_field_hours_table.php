@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->time('start');
             $table->time('end');
+            $table->unsignedInteger('position');
             $table->boolean('active')->default(true);
             $table->foreignId('field_day_id')->constrained();
             $table->timestamps();
