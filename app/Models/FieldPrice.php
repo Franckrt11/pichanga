@@ -16,4 +16,9 @@ class FieldPrice extends Model
     protected $casts = [
         'active'=> 'boolean',
     ];
+
+    public function day()
+    {
+        return $this->belongsTo(FieldHour::class, 'id', 'field_hour_id');
+    }
 }

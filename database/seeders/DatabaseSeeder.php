@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             FieldSeeder::class,
             FieldDaySeeder::class,
             FieldHourSeeder::class,
+            FieldPriceSeeder::class,
             CommentSeeder::class,
             BookingSeeder::class,
             ConfigSeeder::class,

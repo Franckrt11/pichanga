@@ -51,6 +51,10 @@ Route::prefix('company')->group(function () {
     Route::post('field/{id}/hours',[FieldRecordCompany::class, 'storehours'])->middleware('auth:sanctum');
     Route::put('field/{id}/hours', [FieldRecordCompany::class, 'updatehours'])->middleware('auth:sanctum');
 
+    Route::get('field/{id}/prices', [FieldRecordCompany::class, 'showprices'])->middleware('auth:sanctum');
+    Route::post('field/{id}/prices', [FieldRecordCompany::class, 'storeprices'])->middleware('auth:sanctum');
+    Route::put('field/{id}/prices', [FieldRecordCompany::class, 'updateprices'])->middleware('auth:sanctum');
+
     Route::get('field/{id}/pictures', [PictureCompany::class, 'show'])->middleware('auth:sanctum');
     Route::post('field/{id}/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');
     Route::delete('field/{id}/gallery',[PictureCompany::class, 'destroy'])->middleware('auth:sanctum');

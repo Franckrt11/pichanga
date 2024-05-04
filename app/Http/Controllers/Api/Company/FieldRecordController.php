@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FieldDay;
 use App\Models\FieldHour;
+use App\Models\FieldPrice;
 
 class FieldRecordController extends Controller
 {
@@ -152,5 +153,71 @@ class FieldRecordController extends Controller
         }
 
         return response()->json(['status' => true]);
+    }
+
+    public function showprices(string $id)
+    {
+        $days = FieldDay::with('hours.price')->where('field_id', $id)->get();
+        $filtered = [];
+
+        foreach ($days as $day) {
+            $filtered[$day->day] = $day->hours;
+        }
+
+        return response()->json(['status' => true, 'data' => $filtered]);
+    }
+
+    public function updateprices(Request $request, string $id)
+    {
+        $prices_array = [];
+
+        foreach ($request->prices as $price_object) {
+
+            if (isset($price_object['id'])) {
+                $price = FieldPrice::find($price_object['id']);
+                $change = 0;
+
+                if ($price->whole !== $price_object['whole']) {
+                    $price->whole = $price_object['whole'];
+                    $change += 1;
+                }
+
+                if ($price->half !== $price_object['half']) {
+                    $price->half = $price_object['half'];
+                    $change += 1;
+                }
+
+                if ($change > 0) {
+                    $price->save();
+                }
+            } else {
+                $price = new FieldPrice;
+                $price->half = $price_object['half'] ?? 0;
+                $price->whole = $price_object['whole'] ?? 0;
+                $price->active = true;
+                $price->field_hour_id = $price_object['field_hour_id'];
+                $price->save();
+            }
+            array_push($prices_array, $price->id);
+        }
+
+        return response()->json(['status' => true, 'data' => $prices_array]);
+    }
+
+    public function storeprices(Request $request, string $id)
+    {
+        $prices_array = [];
+
+        foreach ($request->prices as $price_object) {
+                $price = new FieldPrice;
+                $price->half = $price_object['half'] ?? 0;
+                $price->whole = $price_object['whole'] ?? 0;
+                $price->active = true;
+                $price->field_hour_id = $price_object['field_hour_id'];
+                $price->save();
+                array_push($prices_array, $price->id);
+        }
+
+        return response()->json(['status' => true, 'data' => $prices_array]);
     }
 }
