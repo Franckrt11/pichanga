@@ -19,7 +19,7 @@ class CompanySeeder extends Seeder
                 'email' => 'informes@asociacioncanchas.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'status' => TRUE,
-                'photo' => NULL,
+                'photo' => 'company-avatar-1697648612.jpg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -29,7 +29,7 @@ class CompanySeeder extends Seeder
                 'email' => 'gerencia@donsebas.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'status' => TRUE,
-                'photo' => NULL,
+                'photo' => 'company-avatar-1695499086.jpg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

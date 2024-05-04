@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('ruc')->unique()->nullable();
+            $table->string('name');
+            $table->string('ruc')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->boolean('push')->default(true);
             $table->boolean('mailing')->default(true);
             $table->string('photo')->nullable();

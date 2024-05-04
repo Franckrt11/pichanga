@@ -16,11 +16,15 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             FieldSeeder::class,
+            FieldDaySeeder::class,
+            FieldHourSeeder::class,
+            FieldPriceSeeder::class,
             CommentSeeder::class,
             BookingSeeder::class,
             ConfigSeeder::class,
             CompanyActivityLogSeeder::class,
-            UserActivityLogSeeder::class
+            UserActivityLogSeeder::class,
+            ChatSeeder::class
         ]);
     }
 }

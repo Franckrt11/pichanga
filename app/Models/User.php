@@ -16,34 +16,25 @@ class User extends Authenticatable
         'lastname',
         'email',
         'phone',
+        'district',
         'password',
-        'birth',
-        'sex',
         'status',
         'photo',
+        'push',
+        'mailing',
         'google_id',
         'facebook_id'
     ];
 
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'birth' => 'date',
         'status'=> 'boolean',
+        'push'=> 'boolean',
+        'mailing'=> 'boolean',
     ];
-
-    public function sexString()
-    {
-        $sex = [
-            'male' => 'Masculino',
-            'female' => 'Femenino'
-        ];
-        return $sex[$this->sex];
-    }
 
     public function comments()
     {
