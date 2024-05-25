@@ -64,7 +64,7 @@ class Crud extends Component
             $this->admin->password = Hash::make($this->data['password']);
         }
         $this->admin->save();
-        return redirect()->route('admins.crud', [ 'id' => $this->admin->id ]);
+        return redirect()->route('panel.admins.crud', [ 'id' => $this->admin->id ]);
     }
 
     public function resetPassword()
@@ -80,7 +80,7 @@ class Crud extends Component
             ]);
             if ($this->admin->id == Auth::user()->id) {
                 Auth::logout();
-                return redirect()->route('login');
+                return redirect()->route('panel.login');
             }
         } else {
             $this->dispatchBrowserEvent('toast-alert', [

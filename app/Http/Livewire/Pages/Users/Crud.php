@@ -57,7 +57,7 @@ class Crud extends Component
         $this->user->status = $this->data['status'];
         $this->user->name = $this->data['name'];
         $this->user->save();
-        return redirect()->route('users.crud', [ 'id' => $this->user->id ]);
+        return redirect()->route('panel.users.crud', [ 'id' => $this->user->id ]);
     }
 
     public function deletePhoto()
@@ -66,7 +66,7 @@ class Crud extends Component
             Storage::delete('users/'.$this->data['photo']);
             $this->user->photo = NULL;
             $this->user->save();
-            return redirect()->route('users.crud', [ 'id' => $this->user->id ]);
+            return redirect()->route('panel.users.crud', [ 'id' => $this->user->id ]);
         } else {
             $this->dispatchBrowserEvent('toast-alert', [
                 'icon' => 'warning',
