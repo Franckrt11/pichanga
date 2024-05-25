@@ -123,7 +123,7 @@
                             </div>
                             <div class="col-12" >
                                 <p>Ubicación</p>
-                                <div class="mb-3" data-component="map-picker" data-props="{{ $data['map'] }}">
+                                <div class="mb-3" data-component="map-picker" data-props="{{ $data['map_latitude'] }},{{ $data['map_longitude'] }}">
                                     <div class="map-container" id="map"></div>
                                 </div>
                             </div>
