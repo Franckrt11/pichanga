@@ -28,8 +28,7 @@ class Crud extends Component
             'lastname' => $this->user->lastname,
             'email' => $this->user->email,
             'phone' => $this->user->phone,
-            'birth' => $this->user->birth->format('d-m-Y'),
-            'sex' => $this->user->sex,
+            'district' => $this->user->district,
             'status' => $this->user->status,
             'photo' => $this->user->photo,
         ];
@@ -52,10 +51,8 @@ class Crud extends Component
         $this->user->lastname = $this->data['lastname'];
         $this->user->email = $this->data['email'];
         $this->user->phone = $this->data['phone'];
-        $this->user->birth = $this->data['birth'];
-        $this->user->sex = $this->data['sex'];
+        $this->user->district = $this->data['district'];
         $this->user->status = $this->data['status'];
-        $this->user->name = $this->data['name'];
         $this->user->save();
         return redirect()->route('panel.users.crud', [ 'id' => $this->user->id ]);
     }

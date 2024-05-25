@@ -46,8 +46,7 @@
                                     <th>Apellidos</th>
                                     <th>Teléfono</th>
                                     <th>Correo</th>
-                                    <th>F. Nacimiento</th>
-                                    <th>Sexo</th>
+                                    <th>Distrito</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -59,8 +58,7 @@
                                     <td>{{ $user->lastname }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->birth->format('d-m-Y') }}</td>
-                                    <td>{{ $user->sexString() }}</td>
+                                    <td>{{ $user->district }}</td>
                                     <td>
                                         <div class="controls justify-content-center">
                                             <a href="{{ route('panel.users.crud', [ 'id' => $user->id ]) }}" class="icon">

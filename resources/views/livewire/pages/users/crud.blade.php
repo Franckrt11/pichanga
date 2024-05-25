@@ -30,16 +30,8 @@
                             <input type="email" name="email" id="email" class="form-control" wire:model.defer="data.email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="birth" class="form-label">Fecha de nacimiento</label>
-                            <input type="text" name="birth" id="birth" class="form-control" wire:model.defer="data.birth" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sex" class="form-label">Roles</label>
-                            <select class="form-select" name="sex" id="sex" wire:model.defer="data.sex" required>
-                                <option value="" disabled selected> --- </option>
-                                <option value="male">Masculino</option>
-                                <option value="female">Femenino</option>
-                            </select>
+                            <label for="district" class="form-label">Distrito</label>
+                            <input type="text" name="district" id="district" class="form-control" wire:model.defer="data.district" required>
                         </div>
                         <div class="row mb-3">
                             <div class="col-12 col-md-5 col-lg-3">

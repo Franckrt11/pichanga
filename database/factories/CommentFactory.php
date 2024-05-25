@@ -20,7 +20,7 @@ class CommentFactory extends Factory
             'score' => fake()->numberBetween(1, 5),
             'content' => fake()->paragraph(),
             'status' => fake()->boolean(),
-            'user_id' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 2),
             'field_id' => fake()->numberBetween(1, 2),
         ];
     }
