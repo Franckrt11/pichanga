@@ -19,7 +19,8 @@ class Field extends Model
         'city',
         'district',
         'address',
-        'map',
+        'map_latitude',
+        'map_longitude',
         'active',
         'portrait',
         'company_id'
