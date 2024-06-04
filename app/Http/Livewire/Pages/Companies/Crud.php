@@ -67,7 +67,7 @@ class Crud extends Component
             $this->company->password = Hash::make($this->data['password']);
         }
         $this->company->save();
-        return redirect()->route('companies.crud', [ 'id' => $this->company->id ]);
+        return redirect()->route('panel.companies.crud', [ 'id' => $this->company->id ]);
     }
 
     public function resetPassword()

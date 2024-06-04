@@ -30,13 +30,13 @@ class Crud extends Component
         $this->comment->content = $this->data['content'];
         $this->comment->status = $this->data['status'];
         $this->comment->save();
-        return redirect()->route('comments.crud', [ 'id' => $this->comment->id ]);
+        return redirect()->route('panel.comments.crud', [ 'id' => $this->comment->id ]);
     }
 
     public function delete()
     {
         $this->comment->delete();
-        return redirect()->route('comments');
+        return redirect()->route('panel.comments');
     }
 
     public function render()

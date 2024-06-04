@@ -4,8 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0296377f917bb30deb46d1095c04e3ad",
+    "content-hash": "09e451822760740f9b2b0accff32e22c",
     "packages": [
+        {
+            "name": "bagusindrayana/laravel-coordinate",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bagusindrayana/laravel-coordinate.git",
+                "reference": "bb59dcb8b94bc14fef09d59cb43193075693bf0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bagusindrayana/laravel-coordinate/zipball/bb59dcb8b94bc14fef09d59cb43193075693bf0f",
+                "reference": "bb59dcb8b94bc14fef09d59cb43193075693bf0f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bagusindrayana\\LaravelCoordinate\\": "/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bagus Indrayana",
+                    "email": "bagusindrayanaindo@gmail.com"
+                }
+            ],
+            "description": "get nearby location from eloquent laravel",
+            "support": {
+                "issues": "https://github.com/bagusindrayana/laravel-coordinate/issues",
+                "source": "https://github.com/bagusindrayana/laravel-coordinate/tree/0.0.3"
+            },
+            "time": "2021-07-12T05:41:13+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",

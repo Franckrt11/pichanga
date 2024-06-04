@@ -3,9 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Bagusindrayana\LaravelCoordinate\Traits\LaravelCoordinate;
 
 class Field extends Model
 {
+    use LaravelCoordinate;
+
+    public $_latitudeName = "map_latitude";
+    public $_longitudeName = "map_longitude";
+
     protected $fillable = [
         'name',
         'phone',
@@ -19,7 +25,8 @@ class Field extends Model
         'city',
         'district',
         'address',
-        'map',
+        'map_latitude',
+        'map_longitude',
         'active',
         'portrait',
         'company_id'

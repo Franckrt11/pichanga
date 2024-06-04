@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('city');
             $table->string('district');
             $table->string('address');
-            $table->string('map');
+            $table->double('map_latitude', 10, 6);
+            $table->double('map_longitude', 10, 6);
             $table->string('portrait')->nullable();
             $table->boolean('active')->default(true);
             $table->boolean('hours')->default(true);

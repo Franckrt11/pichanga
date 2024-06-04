@@ -38,7 +38,8 @@ class FieldController extends Controller
             'city' => $request->city,
             'district' => $request->district,
             'address' => $request->address,
-            'map' => $request->map,
+            'map_latitude' => $request->map_latitude,
+            'map_longitude' => $request->map_longitude,
             'active' => TRUE,
             'company_id' => $request->company_id,
         ]);
@@ -79,7 +80,8 @@ class FieldController extends Controller
         $request->city ?: $field->city = $request->city;
         $request->district ?: $field->district = $request->district;
         $request->address ?: $field->address = $request->address;
-        $request->map ?: $field->map = $request->map;
+        $request->map_latitude ?: $field->map_latitude = $request->map_latitude;
+        $request->map_longitude ?: $field->map_longitude = $request->map_longitude;
         $request->active ?: $field->active = $request->active;
         $request->portrait ?: $field->portrait = $request->portrait;
 

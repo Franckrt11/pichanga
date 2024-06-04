@@ -40,7 +40,8 @@ class Field extends Component
                 'city' => '',
                 'district' => '',
                 'address' => '',
-                'map' => '',
+                'map_latitude' => '',
+                'map_longitude' => '',
                 'portrait' => NULL,
             ];
         } else {
@@ -59,7 +60,8 @@ class Field extends Component
                 'city' => $this->field->city,
                 'district' => $this->field->district,
                 'address' => $this->field->address,
-                'map' => $this->field->map,
+                'map_latitude' => $this->field->map_latitude,
+                'map_longitude' => $this->field->map_longitude,
                 'portrait' => $this->field->portrait,
             ];
             $this->reloadImages();
@@ -93,6 +95,8 @@ class Field extends Component
             $this->field->active = TRUE;
         }
 
+        $coordinates = explode(',', $marker);
+
         $this->field->name = $this->data['name'];
         $this->field->phone = $this->data['phone'];
         $this->field->mobile = $this->data['mobile'];
@@ -105,10 +109,11 @@ class Field extends Component
         $this->field->city = $this->data['city'];
         $this->field->district = $this->data['district'];
         $this->field->address = $this->data['address'];
-        $this->field->map = $marker;
+        $this->field->map_latitude = $coordinates[0];
+        $this->field->map_longitude = $coordinates[1];
         $this->field->company_id = $this->company;
         $this->field->save();
-        return redirect()->route('companies.field', [
+        return redirect()->route('panel.companies.field', [
             'id' => $this->company,
             'fid' => $this->field->id
         ]);

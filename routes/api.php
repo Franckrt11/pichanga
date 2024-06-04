@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\User\Auth\AuthenticatedController as AuthUser;
 // PasswordUser
 use App\Http\Controllers\Api\User\ProfileController as ProfileUser;
 use App\Http\Controllers\Api\User\AvatarController as AvatarUser;
+use App\Http\Controllers\Api\User\FieldController as FieldUser;
 
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);
@@ -70,6 +71,8 @@ Route::prefix('client')->group(function () {
     Route::post('avatar/update/{id}', [AvatarUser::class, 'update'])->middleware('auth:sanctum');
     Route::post('avatar/remove/{id}', [AvatarUser::class, 'destroy'])->middleware('auth:sanctum');
     Route::put('config/{id}', [ProfileUser::class, 'config'])->middleware('auth:sanctum');
+
+    Route::post('fields/nearby', [FieldUser::class, 'nearby'])->middleware('auth:sanctum');
 });
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
