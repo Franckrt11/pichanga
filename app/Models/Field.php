@@ -21,9 +21,9 @@ class Field extends Model
         'type',
         'players',
         'games',
-        'country',
-        'city',
-        'district',
+        'country_id',
+        'city_id',
+        'district_id',
         'address',
         'map_latitude',
         'map_longitude',
@@ -35,6 +35,21 @@ class Field extends Model
     protected $casts = [
         'active' => 'boolean',
     ];
+
+    public function country()
+    {
+        return $this->hasOne(Country::class);
+    }
+
+    public function city()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    public function district()
+    {
+        return $this->hasOne(District::class);
+    }
 
     public function company()
     {

@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('type');
             $table->string('players');
             $table->string('games');
-            $table->string('country');
-            $table->string('city');
-            $table->string('district');
+            $table->foreignId('country_id')->constrained();
+            $table->foreignId('city_id')->constrained();
+            $table->foreignId('district_id')->constrained();
             $table->string('address');
             $table->double('map_latitude', 10, 6);
             $table->double('map_longitude', 10, 6);
