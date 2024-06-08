@@ -15,7 +15,9 @@ class CitySeeder extends Seeder
         City::insert([
             [
                 'name' => 'Lima',
-                'country_id' => 1
+                'country_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }

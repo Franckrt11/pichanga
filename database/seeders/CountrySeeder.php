@@ -14,7 +14,9 @@ class CountrySeeder extends Seeder
     {
         Country::insert([
             [
-                'name' => 'Perú'
+                'name' => 'Perú',
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }
