@@ -72,7 +72,9 @@ Route::prefix('client')->group(function () {
     Route::post('avatar/remove/{id}', [AvatarUser::class, 'destroy'])->middleware('auth:sanctum');
     Route::put('config/{id}', [ProfileUser::class, 'config'])->middleware('auth:sanctum');
 
+    Route::get('field/{id}', [FieldUser::class, 'show'])->middleware('auth:sanctum');
     Route::post('fields/nearby', [FieldUser::class, 'nearby'])->middleware('auth:sanctum');
+    Route::get('field/{id}/pictures', [FieldUser::class, 'picture'])->middleware('auth:sanctum');
 });
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
