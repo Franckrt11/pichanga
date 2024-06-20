@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Config;
+use App\Models\Country;
+use App\Models\City;
+use App\Models\District;
 
 class ConfigController extends Controller
 {
@@ -53,5 +56,23 @@ class ConfigController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showcountries()
+    {
+        $countries = Country::all();
+        return response()->json(['status' => true, 'data' => $countries]);
+    }
+
+    public function showcities(string $id)
+    {
+        $cities = City::where('country_id', $id)->get();
+        return response()->json(['status' => true, 'data' => $cities]);
+    }
+
+    public function showdistricts(string $id)
+    {
+        $districts = District::where('city_id', $id)->get();
+        return response()->json(['status' => true, 'data' => $districts]);
     }
 }

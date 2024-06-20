@@ -79,6 +79,10 @@ Route::prefix('client')->group(function () {
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
 
+Route::get('countries', [ConfigController::class, 'showcountries'])->middleware('auth:sanctum');
+Route::get('cities/{id}', [ConfigController::class, 'showcities'])->middleware('auth:sanctum');
+Route::get('districts/{id}', [ConfigController::class, 'showdistricts'])->middleware('auth:sanctum');
+
 Route::get('chat', [ChatController::class,'index'])->middleware('auth:sanctum');
 Route::post('chat', [ChatController::class,'store'])->middleware('auth:sanctum');
 Route::get('chat/{id}', [ChatController::class,'show'])->middleware('auth:sanctum');
