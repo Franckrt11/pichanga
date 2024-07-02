@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('field_days', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
+            $table->unsignedInteger('day');
             $table->boolean('active')->default(true);
             $table->foreignId('field_id')->constrained();
             $table->timestamps();

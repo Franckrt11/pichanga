@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('field_hours', function (Blueprint $table) {
             $table->id();
-            $table->time('start');
-            $table->time('end');
+            $table->unsignedInteger('start');
+            $table->unsignedInteger('end');
             $table->unsignedInteger('position');
             $table->boolean('active')->default(true);
             $table->foreignId('field_day_id')->constrained();

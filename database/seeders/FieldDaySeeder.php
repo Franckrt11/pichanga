@@ -14,61 +14,54 @@ class FieldDaySeeder extends Seeder
     {
         FieldDay::insert([
             [
-                'day' => 'lu',
-                'active' => TRUE,
-                'field_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-
-            ],
-            [
-                'day' => 'ma',
-                'active' => TRUE,
-                'field_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-
-            ],
-            [
-                'day' => 'mi',
-                'active' => TRUE,
-                'field_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-
-            ],
-            [
-                'day' => 'ju',
-                'active' => TRUE,
-                'field_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-
-            ],
-            [
-                'day' => 'vi',
+                'day' => 0,
                 'active' => FALSE,
                 'field_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
-
             ],
             [
-                'day' => 'sa',
+                'day' => 1,
+                'active' => TRUE,
+                'field_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'day' => 2,
+                'active' => TRUE,
+                'field_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'day' => 3,
+                'active' => TRUE,
+                'field_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'day' => 4,
+                'active' => TRUE,
+                'field_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'day' => 5,
                 'active' => FALSE,
                 'field_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
-
             ],
             [
-                'day' => 'do',
+                'day' => 6,
                 'active' => FALSE,
                 'field_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
-
-            ]
+            ],
         ]);
     }
 }

@@ -34,14 +34,14 @@ class FieldController extends Controller
             'type' => $request->type,
             'players' => $request->players,
             'games' => $request->games,
-            'country' => $request->country,
-            'city' => $request->city,
-            'district' => $request->district,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
             'address' => $request->address,
             'map_latitude' => $request->map_latitude,
             'map_longitude' => $request->map_longitude,
             'active' => TRUE,
-            'company_id' => $request->company_id,
+            'company_id' => $request->company_id
         ]);
 
         CompanyActivityLog::create([
@@ -57,7 +57,7 @@ class FieldController extends Controller
      */
     public function show(string $id)
     {
-        $field = Field::findOrFail($id);
+        $field = Field::with(['company', 'district', 'city', 'country'])->findOrFail($id);
         return response()->json(['status' => true, 'data' => $field]);
     }
 
@@ -76,9 +76,9 @@ class FieldController extends Controller
         $request->type ?: $field->type = $request->type;
         $request->players ?: $field->players = $request->players;
         $request->games ?: $field->games = $request->games;
-        $request->country ?: $field->country = $request->country;
-        $request->city ?: $field->city = $request->city;
-        $request->district ?: $field->district = $request->district;
+        $request->country_id ?: $field->country_id = $request->country_id;
+        $request->city_id ?: $field->city_id = $request->city_id;
+        $request->district_id ?: $field->district_id = $request->district_id;
         $request->address ?: $field->address = $request->address;
         $request->map_latitude ?: $field->map_latitude = $request->map_latitude;
         $request->map_longitude ?: $field->map_longitude = $request->map_longitude;

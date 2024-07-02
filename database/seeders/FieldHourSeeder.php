@@ -14,23 +14,31 @@ class FieldHourSeeder extends Seeder
     {
         FieldHour::insert([
             [
-                'start' => '05:00:00',
-                'end' => '10:00:00',
+                'start' => 1,
+                'end' => 6,
                 'position' => 1,
                 'active' => TRUE,
-                'field_day_id' => 1,
+                'field_day_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'start' => '13:00:00',
-                'end' => '16:00:00',
+                'start' => 9,
+                'end' => 12,
                 'position' => 2,
                 'active' => TRUE,
-                'field_day_id' => 1,
+                'field_day_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
-
+            ],
+            [
+                'start' => 2,
+                'end' => 12,
+                'position' => 1,
+                'active' => TRUE,
+                'field_day_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ]);
     }
