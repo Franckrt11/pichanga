@@ -65,4 +65,9 @@ class Field extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class);
+    }
 }

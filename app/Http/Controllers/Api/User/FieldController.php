@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Field;
 use App\Models\FieldImage;
+use App\Models\FieldDay;
 
 class FieldController extends Controller
 {
@@ -31,14 +32,6 @@ class FieldController extends Controller
             $request->longitude
         ],$request->distance)->get();
 
-        // $nearby = Field::with(['company', 'district'])
-        // // ->select('id', 'name', 'country', 'city', 'district', 'address', 'map_latitude', 'map_longitude', 'portrait', 'company_id')
-        // ->where('active', 1)
-        // // ->nearby([
-        // //     $request->latitude,
-        // //     $request->longitude
-        // // ],$request->distance)
-        // ->get();
         return response()->json(['status' => true, 'data' => $nearby]);
     }
 
@@ -46,5 +39,14 @@ class FieldController extends Controller
     {
         $pictures = FieldImage::where('field_id', intval($id))->orderBy('position')->get();
         return response()->json(['status' => true, 'data' => $pictures]);
+    }
+
+    public function showdays(string $id)
+    {
+        $days = FieldDay::with('hours')->where('field_id', $id)
+                    ->where('active', true)
+                    ->get();
+
+        return response()->json(['status' => true, 'data' => $days]);
     }
 }

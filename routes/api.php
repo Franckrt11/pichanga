@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\User\Auth\AuthenticatedController as AuthUser;
 use App\Http\Controllers\Api\User\ProfileController as ProfileUser;
 use App\Http\Controllers\Api\User\AvatarController as AvatarUser;
 use App\Http\Controllers\Api\User\FieldController as FieldUser;
+use App\Http\Controllers\Api\User\ReserveController as ReserveUser;
 
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);
@@ -73,8 +74,12 @@ Route::prefix('client')->group(function () {
     Route::put('config/{id}', [ProfileUser::class, 'config'])->middleware('auth:sanctum');
 
     Route::get('field/{id}', [FieldUser::class, 'show'])->middleware('auth:sanctum');
+    Route::get('field/{id}/days', [FieldUser::class, 'showdays'])->middleware('auth:sanctum');
     Route::post('fields/nearby', [FieldUser::class, 'nearby'])->middleware('auth:sanctum');
     Route::get('field/{id}/pictures', [FieldUser::class, 'picture'])->middleware('auth:sanctum');
+
+    Route::get('reserves/{id}', [ReserveUser::class, 'index'])->middleware('auth:sanctum');
+    Route::post('reserve', [ReserveUser::class, 'store'])->middleware('auth:sanctum');
 });
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');
@@ -86,6 +91,9 @@ Route::get('districts/{id}', [ConfigController::class, 'showdistricts'])->middle
 Route::get('chat', [ChatController::class,'index'])->middleware('auth:sanctum');
 Route::post('chat', [ChatController::class,'store'])->middleware('auth:sanctum');
 Route::get('chat/{id}', [ChatController::class,'show'])->middleware('auth:sanctum');
+
+Route::get('chat/room/{user}/{company}', [ChatController::class,'showroom'])->middleware('auth:sanctum');
+Route::post('chat/room', [ChatController::class,'store'])->middleware('auth:sanctum');
 
 Route::get('chat/message/{id}', [MessageController::class,'show'])->middleware('auth:sanctum');
 Route::post('chat/message', [MessageController::class,'store'])->middleware('auth:sanctum');

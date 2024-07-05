@@ -23,6 +23,6 @@ class FieldDay extends Model
 
     public function hours()
     {
-        return $this->hasMany(FieldHour::class);
+        return $this->hasMany(FieldHour::class)->with('price');
     }
 }
