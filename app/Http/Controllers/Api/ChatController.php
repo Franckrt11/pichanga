@@ -28,7 +28,12 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $room = new Chat;
+        $room->user_id = $request->user_id;
+        $room->company_id = $request->company_id;
+        $room->save();
+
+        return response()->json(['status' => true, 'data' => $room->id]);
     }
 
     /**
@@ -54,5 +59,17 @@ class ChatController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showroom(string $user, string $company) {
+        $room = Chat::where("user_id", $user)
+                        ->where("company_id", $company)
+                        ->first();
+
+        if ($room) {
+            return response()->json(['status' => true, 'data' => $room->id ]);
+        } else {
+            return response()->json(['status' => true, 'data' => false ]);
+        }
     }
 }
