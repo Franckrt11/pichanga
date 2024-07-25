@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->string('last_message');
-            $table->enum('last_sender', ['user', 'company']);
+            $table->string('last_message')->nullable();
+            $table->enum('last_sender', ['user', 'company'])->nullable();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('company_id')->constrained();
             $table->timestamps();
