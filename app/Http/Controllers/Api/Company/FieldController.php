@@ -16,7 +16,7 @@ class FieldController extends Controller
      */
     public function index(string $id)
     {
-        $list = Field::where('company_id', intval($id))->get();
+        $list = Field::with('district')->where('company_id', intval($id))->get();
         return response()->json(['status' => true, 'data' => $list]);
     }
 
@@ -68,22 +68,28 @@ class FieldController extends Controller
     {
         $field = Field::findOrFail($id);
 
-        $request->name ?: $field->name = $request->name;
-        $request->phone ?: $field->phone = $request->phone;
-        $request->mobile ?: $field->mobile = $request->mobile;
-        $request->parking ?: $field->parking = $request->parking;
-        $request->size ?: $field->size = $request->size;
-        $request->type ?: $field->type = $request->type;
-        $request->players ?: $field->players = $request->players;
-        $request->games ?: $field->games = $request->games;
-        $request->country_id ?: $field->country_id = $request->country_id;
-        $request->city_id ?: $field->city_id = $request->city_id;
-        $request->district_id ?: $field->district_id = $request->district_id;
-        $request->address ?: $field->address = $request->address;
-        $request->map_latitude ?: $field->map_latitude = $request->map_latitude;
-        $request->map_longitude ?: $field->map_longitude = $request->map_longitude;
-        $request->active ?: $field->active = $request->active;
-        $request->portrait ?: $field->portrait = $request->portrait;
+        $field->name = $request->name;
+        $field->phone = $request->phone;
+        $field->mobile = $request->mobile;
+        $field->parking = $request->parking;
+        $field->size = $request->size;
+        $field->type = $request->type;
+        $field->players = $request->players;
+        $field->games = $request->games;
+        $field->country_id = $request->country_id;
+        $field->city_id = $request->city_id;
+        $field->district_id = $request->district_id;
+        $field->address = $request->address;
+        $field->map_latitude = $request->map_latitude;
+        $field->map_longitude = $request->map_longitude;
+
+        if (isset($request->active)) {
+            $field->active = $request->active;
+        }
+
+        if (isset($request->portrait)) {
+            $field->portrait = $request->portrait;
+        }
 
         $field->save();
 

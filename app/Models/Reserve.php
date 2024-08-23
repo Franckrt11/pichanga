@@ -9,6 +9,7 @@ class Reserve extends Model
 {
     protected $fillable = [
         'date',
+        'start_date',
         'time',
         'game',
         'price',
@@ -26,7 +27,7 @@ class Reserve extends Model
 
     public function field()
     {
-        return $this->belongsTo(Field::class);
+        return $this->belongsTo(Field::class)->with('district');
     }
 
     public function hour()

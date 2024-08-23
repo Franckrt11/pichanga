@@ -29,6 +29,30 @@ class FieldPriceSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'half' => 50,
+                'whole' => 80,
+                'active' => TRUE,
+                'field_day_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'half' => 80,
+                'whole' => 90,
+                'active' => TRUE,
+                'field_day_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'half' => 30,
+                'whole' => 60,
+                'active' => TRUE,
+                'field_day_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

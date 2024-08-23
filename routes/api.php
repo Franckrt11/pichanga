@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\Company\FieldController as FieldCompany;
 use App\Http\Controllers\Api\Company\FieldPictureController as PictureCompany;
 use App\Http\Controllers\Api\Company\ActivityController as ActivityCompany;
 use App\Http\Controllers\Api\Company\FieldRecordController as FieldRecordCompany;
+use App\Http\Controllers\Api\Company\ReserveController as ReserveCompany;
 
 // User
 use App\Http\Controllers\Api\User\Auth\AuthenticatedController as AuthUser;
@@ -60,6 +61,11 @@ Route::prefix('company')->group(function () {
     Route::get('field/{id}/pictures', [PictureCompany::class, 'show'])->middleware('auth:sanctum');
     Route::post('field/{id}/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');
     Route::delete('field/{id}/gallery',[PictureCompany::class, 'destroy'])->middleware('auth:sanctum');
+
+    Route::get('reserves/{id}', [ReserveCompany::class, 'index'])->middleware('auth:sanctum');
+    Route::get('reserve/{id}', [ReserveCompany::class, 'show'])->middleware('auth:sanctum');
+    Route::put('reserve/{id}', [ReserveCompany::class, 'update'])->middleware('auth:sanctum');
+    Route::get('reserve/{id}/next', [ReserveCompany::class, 'next'])->middleware('auth:sanctum');
 });
 
 Route::prefix('client')->group(function () {
@@ -79,7 +85,9 @@ Route::prefix('client')->group(function () {
     Route::get('field/{id}/pictures', [FieldUser::class, 'picture'])->middleware('auth:sanctum');
 
     Route::get('reserves/{id}', [ReserveUser::class, 'index'])->middleware('auth:sanctum');
+    Route::get('reserve/{id}', [ReserveUser::class, 'show'])->middleware('auth:sanctum');
     Route::post('reserve', [ReserveUser::class, 'store'])->middleware('auth:sanctum');
+    Route::delete('reserve/{id}', [ReserveUser::class, 'destroy'])->middleware('auth:sanctum');
 });
 
 Route::get('config', [ConfigController::class, 'index'])->middleware('auth:sanctum');

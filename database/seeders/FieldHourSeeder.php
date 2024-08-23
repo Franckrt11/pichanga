@@ -40,6 +40,24 @@ class FieldHourSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'start' => 3,
+                'end' => 124,
+                'position' => 1,
+                'active' => TRUE,
+                'field_day_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'start' => 2,
+                'end' => 17,
+                'position' => 1,
+                'active' => TRUE,
+                'field_day_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

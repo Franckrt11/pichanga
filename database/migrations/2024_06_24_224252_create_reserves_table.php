@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->datetime('start_date')->nullable();
             $table->float('time', 3, 1);
             $table->string('game');
             $table->unsignedSmallInteger('price');

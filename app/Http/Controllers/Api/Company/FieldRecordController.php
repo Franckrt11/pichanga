@@ -49,7 +49,7 @@ class FieldRecordController extends Controller
 
         $showArray = [];
         foreach ($days as $value) {
-            $showArray[$value['day']] = $value['active'];
+            $showArray[$value['day']] = ['day' => $value['day'], 'active' => $value['active']];
         }
 
         return response()->json(['status' => true, 'data' => $showArray]);

@@ -33,4 +33,23 @@ class ReserveController extends Controller
 
         return response()->json(['status' => true, 'data' => $reserve->id ]);
     }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $reserve = Reserve::with(['field', 'hour'])->where('id', $id)->firstOrFail();
+        return response()->json(['status' => true, 'data' => $reserve]);
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $reserve = Reserve::findOrFail($id);
+        $reserve->delete();
+        return response()->json(['status' => true, 'message' => 'Reserva cancelada.']);
+    }
 }

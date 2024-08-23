@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Pages\Booking;
 
 use Livewire\Component;
-use App\Models\Booking;
+use App\Models\Reserve;
 use Livewire\WithPagination;
 use App\Exports\BookingsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -27,7 +27,7 @@ class Home extends Component
     public function render()
     {
         return view('livewire.pages.booking.home', [
-            'bookings' => Booking::with(['user', 'field'])->paginate(10),
+            'bookings' => Reserve::with(['user', 'field'])->paginate(10),
         ])->layout('layouts.admin');
     }
 }
