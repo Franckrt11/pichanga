@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\User\ProfileController as ProfileUser;
 use App\Http\Controllers\Api\User\AvatarController as AvatarUser;
 use App\Http\Controllers\Api\User\FieldController as FieldUser;
 use App\Http\Controllers\Api\User\ReserveController as ReserveUser;
+use App\Http\Controllers\Api\User\ActivityController as ActivityUser;
 
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);
@@ -72,6 +73,8 @@ Route::prefix('client')->group(function () {
     Route::post('register', [AuthUser::class, 'register']);
     Route::post('login', [AuthUser::class, 'login']);
     Route::post('logout', [AuthUser::class, 'logout'])->middleware('auth:sanctum');
+
+    Route::get('activity/{id}', [ActivityUser::class, 'show'])->middleware('auth:sanctum');
 
     Route::get('profile/{id}', [ProfileUser::class, 'show'])->middleware('auth:sanctum');
     Route::put('profile/update/{id}', [ProfileUser::class, 'update'])->middleware('auth:sanctum');

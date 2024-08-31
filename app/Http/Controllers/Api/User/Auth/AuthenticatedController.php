@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +52,11 @@ class AuthenticatedController extends Controller
 
         $token = $user->createToken($request->input('device'))->plainTextToken;
 
+        UserActivityLog::create([
+            'message' => 'Has registrado una nueva cuenta.',
+            'user_id' => $user->id
+        ]);
+
         return response()->json(['status' => true, 'token' => $token, 'user' => $user]);
     }
 
@@ -84,6 +90,12 @@ class AuthenticatedController extends Controller
 
         if (Hash::check($request->input('password'), $user->password)) {
             $token = $user->createToken($request->input('device'))->plainTextToken;
+
+            UserActivityLog::create([
+                'message' => 'Has iniciado sesión.',
+                'user_id' => $user->id
+            ]);
+
             return response()->json(['status' => true, 'token' => $token, 'user' => $user]);
         }
 
