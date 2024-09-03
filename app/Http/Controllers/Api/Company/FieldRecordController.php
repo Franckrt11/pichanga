@@ -97,16 +97,18 @@ class FieldRecordController extends Controller
 
     public function storehours(Request $request, string $id)
     {
-        $days = FieldDay::where('field_id', $id)->where('active', 1)->select('id', 'day')->get();
+        $days = FieldDay::where('field_id', $id)->where('active', 1)->get();
 
         foreach ($request->hours as $keyDay => $hours) {
             if (empty($hours)) continue;
             foreach ($hours as $hour) {
+                $day_id = $days->where('day', intval($keyDay))->first();
+                if (!$day_id) continue;
                 FieldHour::create([
-                    'start' => $hour['start'],
-                    'end' => $hour['end'],
-                    'position' => $hour['position'],
-                    'field_day_id' => $days->where('day', $keyDay)->first()->id,
+                    'start' => intval($hour['start']),
+                    'end' => intval($hour['end']),
+                    'position' => intval($hour['position']),
+                    'field_day_id' => $day_id->id,
                     'created_at' => now(),
                     'updated_at' => now()
                 ]);
