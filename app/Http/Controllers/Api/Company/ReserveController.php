@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reserve;
+use App\Models\CompanyActivityLog;
+use App\Models\UserActivityLog;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
 
@@ -43,12 +45,33 @@ class ReserveController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $reserve = Reserve::with('hour')->findOrFail($id);
+        $reserve = Reserve::with(['field','hour'])->findOrFail($id);
+
         if ($request->status === 'confirm') {
+            $user_message = 'La reserva del campo '.$reserve->field->name.' ha sido confirmada.';
+            $company_message = 'Has confirmado la reserva del campo '.$reserve->field->name.'.';
             $reserve->start_date = Carbon::createFromFormat('Y-m-d G', $reserve->date.' '.$reserve->hour->start + 4 );
         }
+
+        if ($request->status === 'cancel') {
+            $user_message = 'La reserva del campo '.$reserve->field->name.' ha sido cancelada.';
+            $company_message = 'Has cancelado la reserva del campo '.$reserve->field->name.'.';
+        }
+
         $reserve->status = $request->status;
         $reserve->save();
+
+        CompanyActivityLog::create([
+            'message' => $company_message,
+            'company_id' => $reserve->field->company_id
+        ]);
+
+        UserActivityLog::create([
+            'message' => $user_message,
+            'user_id' => $reserve->user_id
+        ]);
+
+
         return response()->json(['status' => true, 'data' => $reserve]);
     }
 

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reserve;
+use App\Models\Field;
+use App\Models\User;
+use App\Models\UserActivityLog;
+use App\Models\CompanyActivityLog;
 
 class ReserveController extends Controller
 {
@@ -30,6 +34,19 @@ class ReserveController extends Controller
         $reserve->field_id = $request->field_id;
         $reserve->user_id = $request->user_id;
         $reserve->save();
+
+        $field = Field::where('id', $request->field_id)->firstOrFail();
+        $user = User::where('id', $request->user_id)->firstOrFail();
+
+        UserActivityLog::create([
+            'message' => 'Has solicitado la reserva del campo '.$field->name.'.',
+            'user_id' => $reserve->user_id
+        ]);
+
+        CompanyActivityLog::create([
+            'message' => 'El usuario '.$user->name.' ha solicitado la reserva del campo '.$field->name.'.',
+            'company_id' => $field->company_id
+        ]);
 
         return response()->json(['status' => true, 'data' => $reserve->id ]);
     }

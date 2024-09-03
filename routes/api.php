@@ -72,6 +72,9 @@ Route::prefix('company')->group(function () {
 Route::prefix('client')->group(function () {
     Route::post('register', [AuthUser::class, 'register']);
     Route::post('login', [AuthUser::class, 'login']);
+    Route::post('google-login', [AuthUser::class, 'googlelogin']);
+    Route::post('facebook-login', [AuthUser::class, 'facebooklogin']);
+
     Route::post('logout', [AuthUser::class, 'logout'])->middleware('auth:sanctum');
 
     Route::get('activity/{id}', [ActivityUser::class, 'show'])->middleware('auth:sanctum');

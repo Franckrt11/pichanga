@@ -102,6 +102,60 @@ class AuthenticatedController extends Controller
         return response()->json(['status' => false, 'errors' => ['password' => 'La contraseña es incorrecta.']]);
     }
 
+    public function googlelogin(Request $request)
+    {
+        $user = User::where('google_id', $request->input('google_id'))->first();
+
+        $activity = 'Has iniciado sesión con Google.';
+
+        if (!$user) {
+            $user = User::create([
+                'name' => $request->input('name'),
+                'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
+                'google_id' => $request->input('google_id')
+            ]);
+
+            $activity = 'Has registrado una nueva cuenta.';
+        }
+
+        $token = $user->createToken($request->input('device'))->plainTextToken;
+
+        UserActivityLog::create([
+            'message' => $activity,
+            'user_id' => $user->id
+        ]);
+
+        return response()->json(['status' => true, 'token' => $token, 'user' => $user]);
+    }
+
+    public function facebooklogin(Request $request)
+    {
+        $user = User::where('facebook_id', $request->input('facebook_id'))->first();
+
+        $activity = 'Has iniciado sesión con Google.';
+
+        if (!$user) {
+            $user = User::create([
+                'name' => $request->input('name'),
+                'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
+                'facebook_id' => $request->input('facebook_id')
+            ]);
+
+            $activity = 'Has registrado una nueva cuenta.';
+        }
+
+        $token = $user->createToken($request->input('device'))->plainTextToken;
+
+        UserActivityLog::create([
+            'message' => $activity,
+            'user_id' => $user->id
+        ]);
+
+        return response()->json(['status' => true, 'token' => $token, 'user' => $user]);
+    }
+
     public function logout(Request $request)
     {
         $token = $request->user()->currentAccessToken()->delete();
