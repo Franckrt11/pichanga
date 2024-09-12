@@ -29,7 +29,7 @@ use App\Http\Controllers\Api\User\ActivityController as ActivityUser;
 Route::prefix('company')->group(function () {
     Route::post('register', [AuthCompany::class, 'register']);
     Route::post('login', [AuthCompany::class, 'login']);
-    Route::post('reset-password', [PasswordCompany::class, 'store']);
+    Route::post('change-password', [PasswordCompany::class, 'store'])->middleware('auth:sanctum');
     Route::post('logout', [AuthCompany::class, 'logout'])->middleware('auth:sanctum');
 
     Route::get('activity/{id}', [ActivityCompany::class, 'show'])->middleware('auth:sanctum');

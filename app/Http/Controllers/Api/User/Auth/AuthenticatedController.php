@@ -14,7 +14,7 @@ class AuthenticatedController extends Controller
     public function register(Request $request)
     {
         if (!$request->input('checkbox')) {
-            return response()->json(['status' => false, 'errors' => ['checkbox' => 'Debes aceptar los términos y condiciones.']]);
+            return response()->json(['status' => false, 'errors' => ['checkbox' => ['Debes aceptar los términos y condiciones.']]]);
         }
 
         $validated = $request->validate([
@@ -85,7 +85,7 @@ class AuthenticatedController extends Controller
         $user = User::where($auth['field'], $request->input('username'))->first();
 
         if (!$user) {
-            return response()->json(['status' => false, 'errors' => ['username' => $auth['fail']]]);
+            return response()->json(['status' => false, 'errors' => ['username' => [$auth['fail']]]]);
         }
 
         if (Hash::check($request->input('password'), $user->password)) {
@@ -99,7 +99,7 @@ class AuthenticatedController extends Controller
             return response()->json(['status' => true, 'token' => $token, 'user' => $user]);
         }
 
-        return response()->json(['status' => false, 'errors' => ['password' => 'La contraseña es incorrecta.']]);
+        return response()->json(['status' => false, 'errors' => ['password' => ['La contraseña es incorrecta.']]]);
     }
 
     public function googlelogin(Request $request)
@@ -136,14 +136,23 @@ class AuthenticatedController extends Controller
         $activity = 'Has iniciado sesión con Google.';
 
         if (!$user) {
-            $user = User::create([
-                'name' => $request->input('name'),
-                'lastname' => $request->input('lastname'),
-                'email' => $request->input('email'),
-                'facebook_id' => $request->input('facebook_id')
-            ]);
+            $saved_user = User::where('email', $request->input('email'))->first();
+            if ($saved_user) {
+                $saved_user->facebook_id = $request->input('facebook_id');
+                $saved_user->save();
 
-            $activity = 'Has registrado una nueva cuenta.';
+                $user = $saved_user;
+                $activity = 'Te has registrado con Facebook.';
+            } else {
+                $user = User::create([
+                    'name' => $request->input('name'),
+                    'lastname' => $request->input('lastname'),
+                    'email' => $request->input('email'),
+                    'facebook_id' => $request->input('facebook_id')
+                ]);
+
+                $activity = 'Has registrado una nueva cuenta.';
+            }
         }
 
         $token = $user->createToken($request->input('device'))->plainTextToken;

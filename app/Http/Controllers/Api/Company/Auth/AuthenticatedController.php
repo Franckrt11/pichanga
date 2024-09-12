@@ -14,7 +14,7 @@ class AuthenticatedController extends Controller
     public function register(Request $request)
     {
         if (!$request->input('checkbox')) {
-            return response()->json(['status' => false, 'errors' => ['checkbox' => 'Debes aceptar los términos y condiciones.']]);
+            return response()->json(['status' => false, 'errors' => ['checkbox' => ['Debes aceptar los términos y condiciones.']]]);
         }
 
         $validated = $request->validate([
@@ -68,7 +68,7 @@ class AuthenticatedController extends Controller
         $company = Company::where('email', $request->input('email'))->first();
 
         if (!$company) {
-            return response()->json(['status' => false, 'errors' => ['email' => 'La dirección de correo no existe.']]);
+            return response()->json(['status' => false, 'errors' => ['email' => ['La dirección de correo no existe.']]]);
         }
 
         if (Hash::check($request->input('password'), $company->password)) {
