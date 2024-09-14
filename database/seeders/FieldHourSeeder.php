@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\FieldHour;
+use App\Models\FieldDay;
 
 class FieldHourSeeder extends Seeder
 {
@@ -59,5 +60,24 @@ class FieldHourSeeder extends Seeder
                 'updated_at' => now()
             ],
         ]);
+
+        $active_days = FieldDay::where('active', TRUE)
+                                ->whereNotIn('id', [2, 3, 4, 5])
+                                ->get();
+        $nextDays = [];
+
+        foreach ($active_days as $day) {
+            $nextDays[] = [
+                'start' => 5,
+                'end' => 15,
+                'position' => 1,
+                'active' => TRUE,
+                'field_day_id' => $day->id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+        }
+
+        FieldHour::insert($nextDays);
     }
 }
