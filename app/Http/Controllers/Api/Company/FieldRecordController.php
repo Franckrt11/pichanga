@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Field;
 use App\Models\FieldDay;
 use App\Models\FieldHour;
 use App\Models\FieldPrice;
@@ -219,6 +220,10 @@ class FieldRecordController extends Controller
                 $price->save();
                 array_push($prices_array, $price->id);
         }
+
+        $field = Field::findOrFail($id);
+        $field->active = true;
+        $field->save();
 
         return response()->json(['status' => true, 'data' => $prices_array]);
     }

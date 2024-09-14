@@ -40,7 +40,7 @@ class FieldController extends Controller
             'address' => $request->address,
             'map_latitude' => $request->map_latitude,
             'map_longitude' => $request->map_longitude,
-            'active' => TRUE,
+            'active' => FALSE,
             'company_id' => $request->company_id
         ]);
 
