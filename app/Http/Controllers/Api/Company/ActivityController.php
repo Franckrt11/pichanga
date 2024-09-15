@@ -31,7 +31,7 @@ class ActivityController extends Controller
     {
         $activity = CompanyActivityLog::where('company_id', $id)
                                         ->select('message', 'created_at')
-                                        ->orderBy('created_at', 'asc')
+                                        ->orderBy('created_at', 'desc')
                                         ->get();
         return response()->json(['status' => true, 'data' => $activity]);
     }
