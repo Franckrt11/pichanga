@@ -13,47 +13,22 @@ class Field extends Model
     public $_longitudeName = "map_longitude";
 
     protected $fillable = [
-        'name',
-        'phone',
-        'mobile',
-        'parking',
         'size',
         'type',
         'players',
         'games',
-        'country_id',
-        'city_id',
-        'district_id',
-        'address',
-        'map_latitude',
-        'map_longitude',
         'active',
         'portrait',
-        'company_id'
+        'location_id'
     ];
 
     protected $casts = [
         'active' => 'boolean',
     ];
 
-    public function country()
+    public function location()
     {
-        return $this->belongsTo(Country::class);
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    public function district()
-    {
-        return $this->belongsTo(District::class);
-    }
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Location::class);
     }
 
     public function images()
