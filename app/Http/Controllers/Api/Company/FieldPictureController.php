@@ -34,7 +34,7 @@ class FieldPictureController extends Controller
             'field_id' => intval($request->field_id)
         ]);
 
-        return response()->json(['status' => true, 'picture' => $picture]);
+        return response()->json(['status' => true, 'data' => $picture]);
     }
 
     /**
@@ -51,7 +51,27 @@ class FieldPictureController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $old_picture = FieldImage::find($id);
+        Storage::disk('public')->delete("company/field/{$old_picture->filename}");
+        $old_picture->delete();
+
+        $timestamp = time();
+        $filename = "company-field-{$timestamp}.jpg";
+        $image = Image::make($request->picture)->resize(800, 500)->encode('jpg', 60);
+        Storage::disk('public')->put("company/field/{$filename}", $image->stream());
+
+        $picture = FieldImage::create([
+            'filename' => $filename,
+            'position' => intval($request->position),
+            'field_id' => intval($request->field_id)
+        ]);
+
+        if ($picture) {
+            $all_pictures = FieldImage::where('field_id', intval($request->field_id))->orderBy('position')->get();
+            return response()->json(['status' => true, 'data' => $all_pictures]);
+        } else {
+            return response()->json(['status' => false]);
+        }
     }
 
     /**

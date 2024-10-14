@@ -16,7 +16,10 @@ class FieldController extends Controller
      */
     public function index(string $id)
     {
-        $list = Field::with('district')->where('company_id', intval($id))->get();
+        $list = Field::with(['location', 'location.district'])->whereHas('location', function($query) use ($id) {
+            $query->where('company_id', $id);
+         })->get();
+
         return response()->json(['status' => true, 'data' => $list]);
     }
 
@@ -26,26 +29,16 @@ class FieldController extends Controller
     public function store(Request $request)
     {
         $field = Field::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'mobile' => $request->mobile,
-            'parking' => $request->parking,
+            'active' => FALSE,
+            'location_id' => $request->location_id,
+            'games' => $request->games,
+            'players' => $request->players,
             'size' => $request->size,
             'type' => $request->type,
-            'players' => $request->players,
-            'games' => $request->games,
-            'country_id' => $request->country_id,
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'address' => $request->address,
-            'map_latitude' => $request->map_latitude,
-            'map_longitude' => $request->map_longitude,
-            'active' => FALSE,
-            'company_id' => $request->company_id
         ]);
 
         CompanyActivityLog::create([
-            'message' => 'Has registrado una nueva cancha como '.$field ->name,
+            'message' => 'Has registrado una nueva cancha.',
             'company_id' => $request->company_id
         ]);
 
@@ -57,7 +50,7 @@ class FieldController extends Controller
      */
     public function show(string $id)
     {
-        $field = Field::with(['company', 'district', 'city', 'country'])->findOrFail($id);
+        $field = Field::with('location')->findOrFail($id);
         return response()->json(['status' => true, 'data' => $field]);
     }
 
@@ -118,7 +111,7 @@ class FieldController extends Controller
         Storage::disk('public')->put("company/field/{$filename}", $image->stream());
         $field->portrait = $filename;
         $field->save();
-        return response()->json(['status' => true, 'picture' => $filename]);
+        return response()->json(['status' => true, 'data' => $filename]);
     }
 
     public function remove(string $id)

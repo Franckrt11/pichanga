@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CitySeeder::class,
             DistrictSeeder::class,
+            LocationSeeder::class,
             FieldSeeder::class,
             FieldDaySeeder::class,
             FieldHourSeeder::class,
