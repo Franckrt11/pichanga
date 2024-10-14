@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Company\Auth\AuthenticatedController as AuthCompany
 use App\Http\Controllers\Api\Company\Auth\PasswordController as PasswordCompany;
 use App\Http\Controllers\Api\Company\ProfileController as ProfileCompany;
 use App\Http\Controllers\Api\Company\AvatarController as AvatarCompany;
+use App\Http\Controllers\Api\Company\LocationController as LocationCompany;
 use App\Http\Controllers\Api\Company\FieldController as FieldCompany;
 use App\Http\Controllers\Api\Company\FieldPictureController as PictureCompany;
 use App\Http\Controllers\Api\Company\ActivityController as ActivityCompany;
@@ -22,6 +23,7 @@ use App\Http\Controllers\Api\User\Auth\AuthenticatedController as AuthUser;
 // PasswordUser
 use App\Http\Controllers\Api\User\ProfileController as ProfileUser;
 use App\Http\Controllers\Api\User\AvatarController as AvatarUser;
+use App\Http\Controllers\Api\User\LocationController as LocationUser;
 use App\Http\Controllers\Api\User\FieldController as FieldUser;
 use App\Http\Controllers\Api\User\ReserveController as ReserveUser;
 use App\Http\Controllers\Api\User\ActivityController as ActivityUser;
@@ -39,6 +41,12 @@ Route::prefix('company')->group(function () {
     Route::post('avatar/update/{id}', [AvatarCompany::class, 'update'])->middleware('auth:sanctum');
     Route::post('avatar/remove/{id}', [AvatarCompany::class, 'destroy'])->middleware('auth:sanctum');
     Route::put('config/{id}', [ProfileCompany::class, 'config'])->middleware('auth:sanctum');
+
+    Route::get('locations/{id}', [LocationCompany::class, 'index'])->middleware('auth:sanctum');
+    Route::get('location/{id}', [LocationCompany::class, 'show'])->middleware('auth:sanctum');
+    Route::put('location/{id}',[LocationCompany::class, 'update'])->middleware('auth:sanctum');
+    Route::post('location/new',[LocationCompany::class, 'store'])->middleware('auth:sanctum');
+    Route::patch('location/{id}/status',[LocationCompany::class, 'changestatus'])->middleware('auth:sanctum');
 
     Route::get('fields/{id}', [FieldCompany::class, 'index'])->middleware('auth:sanctum');
     Route::get('field/{id}', [FieldCompany::class, 'show'])->middleware('auth:sanctum');
@@ -60,7 +68,8 @@ Route::prefix('company')->group(function () {
     Route::put('field/{id}/prices', [FieldRecordCompany::class, 'updateprices'])->middleware('auth:sanctum');
 
     Route::get('field/{id}/pictures', [PictureCompany::class, 'show'])->middleware('auth:sanctum');
-    Route::post('field/{id}/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');
+    Route::post('field/gallery',[PictureCompany::class, 'store'])->middleware('auth:sanctum');
+    Route::put('field/gallery/{id}',[PictureCompany::class, 'update'])->middleware('auth:sanctum');
     Route::delete('field/{id}/gallery',[PictureCompany::class, 'destroy'])->middleware('auth:sanctum');
 
     Route::get('reserves/{id}', [ReserveCompany::class, 'index'])->middleware('auth:sanctum');
