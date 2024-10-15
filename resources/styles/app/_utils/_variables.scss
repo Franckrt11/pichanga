@@ -1,0 +1,21 @@
+$breakpoints: (
+  tiny: 375px,
+  small: 768px,
+  medium: 992px,
+  regular: 1024px,
+  large: 1200px,
+  x-large: 1600px
+) !default;
+
+$show-breakpoints: (tiny, small, medium, regular, large, x-large) !default;
+
+$grid-gutter-width: 30px;
+
+$container-max-widths: (
+  tiny: 90%,
+  small: 738px + $grid-gutter-width,
+  medium: 962px + $grid-gutter-width,
+  regular: 994px + $grid-gutter-width,
+  large: 1170px + $grid-gutter-width,
+  x-large: 1570px + $grid-gutter-width
+);

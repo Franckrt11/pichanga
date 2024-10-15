@@ -1,0 +1,46 @@
+@use "../_utils/fonts" as fonts;
+@use "../_utils/functions" as fn;
+
+@mixin font-base() {
+  font-family: fonts.$font-primary;
+  font-style: normal;
+  font-size: fn.toRem(16);
+  font-weight: 500;
+  margin-bottom: fn.toRem(16);
+}
+
+p {
+  @include font-base();
+  font-size: fn.toRem(16);
+  line-height: fn.toRem(24);
+}
+
+h1 {
+  @include font-base();
+  font-size: fn.toRem(40);
+}
+
+h2 {
+  @include font-base();
+  font-size: fn.toRem(32);
+}
+
+h3 {
+  @include font-base();
+  font-size: fn.toRem(28);
+}
+
+h4 {
+  @include font-base();
+  font-size: fn.toRem(24);
+}
+
+h5 {
+  @include font-base();
+  font-size: fn.toRem(20);
+}
+
+h6 {
+  @include font-base();
+  font-size: fn.toRem(16);
+}

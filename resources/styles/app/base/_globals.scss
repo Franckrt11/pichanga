@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+sup {
+  font-size: 50%;
+  position: relative;
+  top: -1em;
+}
+
+sub {
+  bottom: -0.5em;
+  font-size: 50%;
+  position: relative;
+}
+
+b,
+strong {
+  font-weight: 700;
+}

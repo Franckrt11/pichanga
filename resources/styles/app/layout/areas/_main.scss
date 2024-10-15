@@ -1,0 +1,7 @@
+@use "../../_utils/mixins" as mixins;
+
+.main {
+  &__container {
+    @include mixins.make-container();
+  }
+}

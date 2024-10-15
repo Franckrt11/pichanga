@@ -7,7 +7,7 @@ use App\Http\Controllers\PrivacyController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('terminos', [TermsController::class, 'index'])->name('terms');
 Route::get('privacidad', [PrivacyController::class, 'index'])->name('privacy');

@@ -1,0 +1,42 @@
+@use 'sass:math';
+@use '../variables' as vars;
+@use '../functions' as fn;
+@use './miscelaneous' as mixins;
+
+@mixin make-container() {
+  @include make-fluid();
+
+  @include mixins.mq($from: small) {
+    max-width: fn.get-maxwidth-for($breakpoint: small); /* 1 */
+  }
+
+  @include mixins.mq($from: medium) {
+    max-width: fn.get-maxwidth-for($breakpoint: medium); /* 1 */
+  }
+
+  @include mixins.mq($from: regular) {
+    max-width: fn.get-maxwidth-for($breakpoint: regular); /* 1 */
+  }
+
+  @include mixins.mq($from: large) {
+    max-width: fn.get-maxwidth-for($breakpoint: large); /* 1 */
+  }
+
+  @include mixins.mq($from: x-large) {
+    max-width: fn.get-maxwidth-for($breakpoint: x-large); /* 1 */
+  }
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+@mixin make-fluid() {
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: math.div(fn.toRem(vars.$grid-gutter-width), 2); /* 3 */
+  padding-right: math.div(fn.toRem(vars.$grid-gutter-width), 2); /* 3 */
+  width: 100%; /* 1 */
+}

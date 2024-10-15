@@ -1,0 +1,20 @@
+@use "sass:math";
+@use 'sass:map';
+@use './variables' as vars;
+
+@function toRem($pixels) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @return math.div($pixels, 16px) * 1rem;
+}
+
+/**
+* get the max-width value in px for any given breakpoint
+* (for non-fluid containers), $breakpoint must exist within
+* $container-max-widths array.
+*/
+@function get-maxwidth-for($breakpoint) {
+  @return map.get(vars.$container-max-widths, $breakpoint);
+}
