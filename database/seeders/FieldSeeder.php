@@ -138,7 +138,7 @@ class FieldSeeder extends Seeder
                 'size' => '90m x 120m',
                 'type' => 'Grass',
                 'players' => '14',
-                'games' => '["6v6","7v7"',
+                'games' => '["6v6","7v7"]',
                 'portrait' => 'company-field-1705726605.jpg',
                 'active' => TRUE,
                 'location_id' => 11,
