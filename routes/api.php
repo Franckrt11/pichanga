@@ -96,8 +96,8 @@ Route::prefix('client')->group(function () {
 
     Route::get('field/{id}', [FieldUser::class, 'show'])->middleware('auth:sanctum');
     Route::get('field/{id}/days', [FieldUser::class, 'showdays'])->middleware('auth:sanctum');
-    Route::post('fields/nearby', [FieldUser::class, 'nearby'])->middleware('auth:sanctum');
     Route::get('field/{id}/pictures', [FieldUser::class, 'picture'])->middleware('auth:sanctum');
+    Route::post('fields/nearby', [LocationUser::class, 'nearby'])->middleware('auth:sanctum');
 
     Route::get('reserves/{id}', [ReserveUser::class, 'index'])->middleware('auth:sanctum');
     Route::get('reserve/{id}', [ReserveUser::class, 'show'])->middleware('auth:sanctum');
