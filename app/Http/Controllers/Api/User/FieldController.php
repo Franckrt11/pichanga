@@ -22,19 +22,6 @@ class FieldController extends Controller
         return response()->json(['status' => true, 'data' => $field]);
     }
 
-    public function nearby(Request $request)
-    {
-        $nearby = Field::with(['company', 'district', 'city', 'country'])
-        // ->select('id', 'name', 'country', 'city', 'district', 'address', 'map_latitude', 'map_longitude', 'portrait', 'company_id')
-        ->where('active', 1)
-        ->nearby([
-            $request->latitude,
-            $request->longitude
-        ],$request->distance)->get();
-
-        return response()->json(['status' => true, 'data' => $nearby]);
-    }
-
     public function picture(string $id)
     {
         $pictures = FieldImage::where('field_id', intval($id))->orderBy('position')->get();
